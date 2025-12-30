@@ -1,0 +1,248 @@
+---
+import Link from "../components/icons/Link.astro"
+import LinkButton from "../components/LinkButton.astro"
+import Layout from "../layouts/Layout.astro";
+
+const CERTIFICATES = [
+    {
+        title: "Google Cloud Computing",
+        description: "Certificación que valida competencias clave en Google Cloud Computing, incluyendo el uso de google dataflow, alojamiento en google cloud, Serviciso IAP, IAM, firewalls y mas.",
+        link: "https://www.credly.com/badges/43183450-677b-448e-8094-045c3e918a12/linked_in_profile",
+        image: "/certificates/CertificadoInfotecCloudComputing.webp",
+        issuer: "Infotec",
+        date: "2025",
+        gridClass: "col-span-2 row-span-2"
+    },
+    {
+        title: "Ecosistema Llama para el desarrollo de IA",
+        description: "Certificación que valida conocimientos en uso de payloads, embeddings, bases de datos vectoriales(qdrant y supabase) Y el uso de n8n para el ecosistema de IA LLama, GPT o cualquier otro modelo de LLM.",
+        link: "https://www.linkedin.com/in/antonio-dev-b71146213/details/certifications/1752439030824/single-media-viewer/?profileId=ACoAADXyrwUBQhC5ESfLz5le0otlsDzEijTZ8F0",
+        image: "/certificates/CertificadoInfotecDesarrolloDeIA.webp",
+        issuer: "CENTRO & INFOTEC",
+        date: "2025",
+        gridClass: "col-span-2 row-span-2"
+    },
+    {
+        title: "Java: Servicios web",
+        description: "Certificación que valida competencias clave en el desarrollo de servicios web utilizando Java, incluyendo la implementación y consumo de servicios SOAP, diseño y construcción de API RESTful, uso de Servlets y JSP en aplicaciones web, y la integración de componentes en el entorno nativo de Java EE y servidores Apache tomcat.",
+        link: "https://www.linkedin.com/learning/certificates/96d7cf9a162411028099b238679b06ed947701477d2c3573119466d77ae4d2cc",
+        image: "/certificates/CertificadoJavaServiciosWeb.webp",
+        issuer: "LinkedIn Learning",
+        date: "2025",
+        gridClass: "col-span-1 row-span-1"
+    },
+    {
+        title: "HTML esencial",
+        description: "Certificación que valida competencias fundamentales en el desarrollo de interfaces web utilizando HTML. Este curso abarca desde la estructura básica de páginas web hasta el uso avanzado de formularios, tipos de inputs, elementos semánticos y buenas prácticas de accesibilidad.",
+        link: "https://www.linkedin.com/learning/certificates/01454a81a6bddc6aa0624232f62384d7efd6fa7f8a23d97d1ca85e444228bc91",
+        image: "/certificates/CertificadoHTML.webp",
+        issuer: "LinkedIn Learning",
+        date: "2025",
+        gridClass: "col-span-1 row-span-1"
+    },
+    {
+        title: "Spring Boot esencial",
+        description: "Certificacion que valida competencias en el uso del framework Spring boot, incluyendo la creacion y consumo de apisRest, usnado la arquitectura basica de spring boot con services, models, repositories y controllers, spring security y el uso de la liberia lombok para la construcción de un codigo más limpio y sostenible.",
+        link: "https://www.linkedin.com/learning/certificates/4d4f21fa1d6d44c8e61b1cfd8c697ed0906c341703411758d8795ec9a2fc766e",
+        image: "/certificates/CertificadoSpringBoot.webp",
+        issuer: "LinkedIn Learning",
+        date: "2025",
+        gridClass: "col-span-1 row-span-1"
+    },
+    {
+        title: "CSS esencial",
+        description: "Certificación que valida competencias esenciales en el diseño y estilización de sitios web mediante CSS. El curso cubre conceptos clave como el uso de selectores, modelos de caja, posicionamiento de elementos, sistemas de diseño con Flexbox y Grid, animaciones, transiciones, y adaptabilidad con Media Queries.",
+        link: "https://www.linkedin.com/learning/certificates/1ca74e40e56c4381d74985392535abb3e9b90998ed7e85809908500a1d477c14",
+        image: "/certificates/CertificadoCSS.webp",
+        issuer: "LinkedIn Learning",
+        date: "2025",
+        gridClass: "col-span-1 row-span-1"
+    }
+]
+---
+<Layout title="Certificados de antondev" showHeader={false} showFooter={false}>
+    <main class="container mx-auto px-4 py-8">
+        <section class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-4 auto-rows-[250px] gap-3">
+                {
+                    CERTIFICATES.map(({ image, title, description, link, issuer, date, gridClass }, index) => (
+                            <article
+                                    class={`certificate-card relative overflow-hidden rounded-xl ${gridClass} group cursor-pointer`}
+                                    data-index={index}
+                            >
+                                <div class="absolute inset-0 transition-all duration-300 group-hover:scale-105">
+                                    <img
+                                            alt={`Certificado de ${title}`}
+                                            class="w-full h-full object-cover"
+                                            loading="lazy"
+                                            src={image}
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
+                                </div>
+
+                                <div class="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <h3 class="text-xl font-bold text-white mb-2">
+                                            {title}
+                                        </h3>
+
+                                        <div class="flex items-center gap-x-2 mb-3">
+                                            <span class="text-xs font-medium text-blue-400">{issuer}</span>
+                                            <span class="text-xs text-gray-300">• {date}</span>
+                                        </div>
+
+                                        <p class="text-sm text-gray-200 leading-relaxed mb-4 line-clamp-3">
+                                            {description}
+                                        </p>
+
+                                        {link && (
+                                                <a
+                                                        href={link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                                                        onclick="event.stopPropagation()"
+                                                >
+                                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                                    </svg>
+                                                    Ver Certificado
+                                                </a>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent group-hover:opacity-0 transition-opacity duration-300">
+                                    <h3 class="text-base font-bold text-white truncate">
+                                        {title}
+                                    </h3>
+                                    <p class="text-xs text-gray-300">{issuer}</p>
+                                </div>
+                            </article>
+                    ))
+                }
+            </div>
+        </section>
+
+        <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+            <div class="relative bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <button
+                        id="closeModal"
+                        class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+                        aria-label="Cerrar modal"
+                >
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+
+                <div id="modalContent" class="p-8">
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .certificate-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .certificate-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        z-index: 10;
+    }
+
+    /* Responsive: en móviles todas las tarjetas ocupan el ancho completo */
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        .certificate-card {
+            grid-column: span 1 !important;
+            min-height: 300px;
+        }
+    }
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+
+<script define:vars={{ certificates: CERTIFICATES }}>
+    document.querySelectorAll('.certificate-card').forEach((card) => {
+        card.addEventListener('click', (e) => {
+            const index = parseInt(card.dataset.index);
+            const cert = certificates[index];
+
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+
+            modalContent.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <img 
+                            src="${cert.image}" 
+                            alt="${cert.title}"
+                            class="w-full rounded-lg shadow-2xl"
+                        />
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">
+                            ${cert.title}
+                        </h2>
+                        <div class="flex items-center gap-x-3 mb-6">
+                            <span class="text-sm font-medium text-blue-400">${cert.issuer}</span>
+                            <span class="text-sm text-gray-400">• ${cert.date}</span>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            ${cert.description}
+                        </p>
+                        ${cert.link ? `
+                            <a 
+                                href="${cert.link}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 w-fit"
+                            >
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                </svg>
+                                Ver Certificado
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Cerrar modal
+    const closeModal = () => {
+        const modal = document.getElementById('modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    };
+
+    document.getElementById('closeModal')?.addEventListener('click', closeModal);
+    document.getElementById('modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'modal') closeModal();
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>

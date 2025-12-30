@@ -1,0 +1,28 @@
+---
+import ProfileCheck from "./icons/ProfileCheck.astro";
+import TitleSection from "./TitleSection.astro";
+---
+<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+  <div
+      class="[&>p]:mb-4 [&>p>strong]:text-green-800 dark:[&>p>strong]:text-green-600 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+  ><figure class="flex flex-row gap-6 items-center">
+    <div class="flex-1 flex flex-col gap-4">
+      <TitleSection>
+        <ProfileCheck class="size-8" />
+        Sobre mí
+      </TitleSection>
+      <p class="text-pretty">
+        Me llamo <strong style="color: green">Jose Antonio.</strong> Soy programador full stack y también tengo experiencia en AI ENGINEERING(n8n)
+        y Cloud Computing(Google Cloud). Actualmente participo en proyectos de <strong style="color: green">código abierto</strong> aportando mi experiencia y conocimientos en soluciones a problemáticas reales.
+      </p>
+    </div>
+    <img
+        width="150"
+        height="150"
+        src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif"
+        alt="Animación de perfil"
+        class="rounded-lg flex-shrink-0"
+    >
+  </figure>
+  </div>
+</article>

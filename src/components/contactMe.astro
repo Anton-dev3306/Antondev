@@ -1,0 +1,150 @@
+<form class="contact-form max-w-md mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+    <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Correo electrónico
+        </label>
+        <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-600 dark:focus:border-blue-600 transition-colors"
+                required
+                placeholder="tu@email.com"
+                autocomplete="email"
+        />
+    </div>
+    <div class="mb-6">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Mensaje
+        </label>
+        <textarea
+                id="message"
+                name="message"
+                class="w-full px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-600 dark:focus:border-blue-600 transition-colors resize-vertical"
+                required
+                placeholder="Escribe tu mensaje aquí..."
+                rows="5"
+                minlength="10"
+                maxlength="500"
+        ></textarea>
+        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            <span id="charCount">0</span>/500 caracteres
+        </p>
+    </div>
+
+    <button
+            type="submit"
+            class="w-full px-6 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg transition-colors duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+        Enviar mensaje
+    </button>
+
+    <div id="statusMessage" class="mt-4 text-sm text-center hidden"></div>
+</form>
+
+<script>
+    import emailjs from '@emailjs/browser';
+
+    const EMAIL_CONFIG = {
+        PUBLIC_KEY: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+        SERVICE_ID: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+        TEMPLATE_ID: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID
+    };
+
+    if (EMAIL_CONFIG.PUBLIC_KEY) {
+        emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
+    }
+
+    const messageTextarea = document.getElementById('message') as HTMLTextAreaElement;
+    const charCount = document.getElementById('charCount');
+
+    if (messageTextarea && charCount) {
+        messageTextarea.addEventListener('input', () => {
+            charCount.textContent = messageTextarea.value.length.toString();
+        });
+    }
+
+    // Manejo del formulario
+    const form = document.querySelector('.contact-form') as HTMLFormElement;
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (!button || !statusMessage) return;
+
+            const originalText = button.textContent || 'Enviar mensaje';
+
+            if (!EMAIL_CONFIG.PUBLIC_KEY || !EMAIL_CONFIG.SERVICE_ID || !EMAIL_CONFIG.TEMPLATE_ID) {
+                showMessage(statusMessage, 'Error: Configuración incompleta', 'error');
+                return;
+            }
+
+            button.textContent = 'Enviando...';
+            button.disabled = true;
+            statusMessage.classList.add('hidden');
+
+            try {
+                // Enviar email con EmailJS
+                const result = await emailjs.sendForm(
+                    EMAIL_CONFIG.SERVICE_ID,
+                    EMAIL_CONFIG.TEMPLATE_ID,
+                    form
+                );
+
+                button.textContent = '¡Enviado!';
+                button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                button.classList.add('bg-green-600', 'hover:bg-green-700');
+
+                showMessage(statusMessage, '¡Mensaje enviado correctamente!', 'success');
+
+                // Reset del formulario
+                form.reset();
+                if (charCount) charCount.textContent = '0';
+
+                // Restaurar botón después de 3 segundos
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    button.disabled = false;
+                }, 3000);
+
+            } catch (error: any) {
+
+                let errorMessage = 'Error al enviar. Intenta de nuevo.';
+
+                if (error.text) {
+                    if (error.text.includes('Invalid')) {
+                        errorMessage = 'Error: Configuración inválida';
+                    } else if (error.text.includes('network')) {
+                        errorMessage = 'Error: Sin conexión';
+                    }
+                }
+
+                button.textContent = 'Error';
+                button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                button.classList.add('bg-red-600', 'hover:bg-red-700');
+
+                showMessage(statusMessage, errorMessage, 'error');
+
+                // Restaurar botón
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    button.disabled = false;
+                }, 3000);
+            }
+        });
+    }
+
+    function showMessage(element: HTMLElement, message: string, type: 'success' | 'error') {
+        element.textContent = message;
+        element.classList.remove('hidden', 'text-green-600', 'text-red-600');
+        element.classList.add(type === 'success' ? 'text-green-600' : 'text-red-600');
+    }
+</script>

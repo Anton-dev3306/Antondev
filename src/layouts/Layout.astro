@@ -1,0 +1,70 @@
+---
+import "@fontsource-variable/onest"
+
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
+interface Props {
+  title: string;
+  description: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
+}
+
+const {
+  description,
+  title,
+  showHeader = true,
+  showFooter = true,
+} = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content={description} />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+
+  <style>
+    .page-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .page-content.transitioning {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  </style>
+</head>
+
+<body class="relative text-black dark:text-white">
+<div
+    class="fixed top-0 left-0 right-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+>
+</div>
+
+{showHeader && <Header />}
+
+<div id="page-content" class="page-content">
+  <slot />
+</div>
+
+{showFooter && <Footer />}
+
+
+</body>
+</html>
+
+<script type="module">
+
+  document.documentElement.classList.add("dark");
+
+</script>

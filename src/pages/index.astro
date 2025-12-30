@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+import AboutMe from "../components/AboutMe.astro"
+import Knowledge from '../components/Knowledge.astro'
+import CodeIcon from "../components/icons/Code.astro"
+import ProfileCheck from "../components/icons/ProfileCheck.astro"
+import Projects from "../components/Projects.astro"
+import SectionContainer from "../components/SectionContainer.astro"
+import Hero from "../components/Hero.astro"
+import TitleSection from "../components/TitleSection.astro"
+import Certificates from "./Certificates.astro"
+import ContactMe from "../components/contactMe.astro"
+import CIcon from "../components/icons/CertificateIcon.astro";
+
+
+---
+<Layout
+    title="Porfolio de Antondev - Desarrollador web y AI ENGGINER"
+    description="Contrata a antondev para crear tu aplicación web o móvil. Desarrollador Web y Creador de Contenido. Especializado en crear aplicaciones únicas."
+>
+  <main class="px-4">
+
+    <SectionContainer class="py-16 md:py-16">
+      <Hero>
+      </Hero>
+    </SectionContainer>
+    <div class="space-y-24">
+
+      <SectionContainer id="sobre-mi">
+        <AboutMe />
+      </SectionContainer>
+
+        <SectionContainer id="Tech-stack">
+            <TitleSection>
+                Conocimientos
+            </TitleSection>
+            <Knowledge />
+        </SectionContainer>
+<br>
+        <SectionContainer id="proyectos">
+            <TitleSection>
+                <CodeIcon class="size-7" />
+                Proyectos
+            </TitleSection>
+            <Projects />
+        </SectionContainer>
+
+        <SectionContainer class="certificate-section" id="certificados">
+            <TitleSection>
+                <CIcon class="size-7"/>
+                Certificados
+            </TitleSection>
+            <Certificates/>
+        </SectionContainer>
+        <br/>
+
+
+     <SectionContainer id="contact-me">
+       <TitleSection>
+         <CodeIcon class="size-7" />
+         Contactame
+       </TitleSection>
+       <ContactMe />
+     </SectionContainer>
+
+   </div>
+  </main>
+</Layout>
+
+<style>
+    .certificate-section {
+        text-align: center;
+    }
+
+    .btn-certificados {
+        font-family: 'Inter', 'Segoe UI', 'system-ui', sans-serif, 'Roboto';
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 30px 120px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        color: #e2e8f0;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-certificados:hover {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .certificate-icon {
+        margin-left: 1px;
+        order: 2;
+        transform: scale(1.2) translateY(0.5px);
+    }
+    .click-icon {
+        opacity: 1;
+        order: 5;
+        margin-left: 1px;
+        transform: scale(2) translateY(1px);
+    }
+</style>
