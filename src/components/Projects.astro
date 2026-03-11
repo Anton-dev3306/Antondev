@@ -8,7 +8,9 @@ import LinkButton from "./LinkButton.astro"
 import RadixUI from "./icons/RadixUI.astro"
 import ReactIcon from "./icons/React.astro"
 import GoogleCloud from "./icons/GCloudIcon.astro"
-
+import SpringBoot from "./icons/SpringIcon.astro"
+import TwiloIcon from "./icons/TwiloIcon.astro"
+import CloudinaryIcon from "./icons/CloudinaryIcon.astro"
 const DEFAULT_CLASS = "bg-[#003159] text-white";
 const BLACK_WHITE = "bg-black text-white";
 
@@ -19,18 +21,20 @@ const TAGS = {
     RADIXUI: { name: "Radix-UI", icon: RadixUI, class: DEFAULT_CLASS },
     REACT: { name: "React", icon: ReactIcon, class: DEFAULT_CLASS },
     GOOGLECLOUD: { name: "Google Cloud", icon: GoogleCloud, class: DEFAULT_CLASS },
+    SPRINGBOOT: {name: "Spring boot", icon: SpringBoot, class: DEFAULT_CLASS },
+    TWILO: {name: "Twilo", icon: TwiloIcon, class: DEFAULT_CLASS },
+    CLOUDINARY: {name: "Cloudinary", icon: CloudinaryIcon, class: DEFAULT_CLASS },
 }
 
 const PROJECTS = [
     {
         title: "Bloom",
         description:
-            "Aplicacion de limpieza de email en la que puedes analizar todos los correos de tu bandeja de entrada" +
-            ", obtener suscripciones activas y remitentes recurrentes, marcar spam masivamente por remitente o directamente marcar como spam todos los remitentes encontrados durante el analisis.",
-        link: "https://app-emails-production.up.railway.app/",
-        github: "https://github.com/Anton-dev3306/app-emails",
-        image: "/projects/cleanGmail.webp",
-        tags: [TAGS.REACT, TAGS.RADIXUI, TAGS.TAILWIND, TAGS.GOOGLECLOUD],
+            "Aplicación de mensajería en tiempo real con soporte para chats privados y grupales, envío de imágenes, videos, audios y archivos, reacciones a mensajes, indicadores de presencia en línea, verificación de cuenta por SMS y gestión de contactos. Construida con Next.js, Spring Boot, WebSockets y almacenamiento en Cloudinary.",
+        link: "https://bloom-frontend-smoky.vercel.app",
+        github: "https://github.com/Anton-dev3306/Bloom-frontend",
+        image: "/projects/Bloom.webp",
+        tags: [TAGS.NEXT, TAGS.REACT, TAGS.TAILWIND, TAGS.SPRINGBOOT, TAGS.TWILO, TAGS.CLOUDINARY],
     },
     {
         title: "Email Cleaner",
