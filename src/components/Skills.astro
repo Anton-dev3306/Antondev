@@ -1,79 +1,88 @@
 ---
 import Code from "./icons/Code.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import JavaScript from "./icons/JavaScript.astro"
-import React from "./icons/React.astro"
-import Java from "./icons/Java.astro"
-import SpringBoot from "./icons/SpringBoot.astro"
-import PHP from "./icons/PHP.astro"
-import GoogleCloud from "./icons/GCloudIcon.astro"
-import N8N from "./icons/N8N.astro"
-import Laravel from "./icons/Laravel.astro"
-import MYSQL from "./icons/mysql.astro"
-import Postgres from "./icons/Postgres.astro"
-import AstroIcon from "./icons/AstroIcon.astro"
 
 const Skills = {
-    technologies: [
-        { name: "Java", icon: Java },
-        { name: "JavaScript", icon: JavaScript },
-        { name: "PHP", icon: PHP },
-        { name: "React", icon: React },
-        { name: "Next.js", icon: NextJS },
-        { name: "Astro", icon: AstroIcon },
-        { name: "Spring Boot", icon: SpringBoot },
-        { name: "Laravel", icon: Laravel },
-        { name: "Tailwind", icon: Tailwind },
+    frontend: [
+        "HTML",
+        "CSS", 
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Astro",
+        "Tailwind CSS"
+    ],
+    backend: [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "Hibernate",
+        "Java EE",
+        "PHP",
+        "Laravel"
     ],
     tools: [
-        { name: "MySQL", icon: MYSQL },
-        { name: "PostgreSQL", icon: Postgres },
-        { name: "Google Cloud", icon: GoogleCloud },
-        { name: "n8n", icon: N8N },
+        "MySQL",
+        "PostgreSQL",
+        "Firebird",
+        "Docker",
+        "Git",
+        "GitHub",
+        "Postman",
+        "Google Cloud",
+        "n8n",
+        "RabbitMQ",
+        "JWT"
     ]
 }
 ---
 
 <article class="relative">
     <div class="mb-6">
-        <h3 class="flex items-center gap-x-3 text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6">
+        <h3 class="flex items-center gap-x-3 text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-8">
             <Code class="size-7" />
             Mis skills
         </h3>
     </div>
 
-    <div class="space-y-8">
-        <!-- Tecnologías -->
+    <div class="space-y-6">
+        <!-- Frontend -->
         <div>
-            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-4 uppercase tracking-wider">
-                Tecnologías
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Lenguajes y Frameworks Frontend
             </h4>
-            <div class="flex flex-wrap gap-3">
-                {Skills.technologies.map((skill) => (
-                    <div class="group relative flex items-center gap-2.5 px-4 py-2.5 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all duration-300">
-                        <skill.icon class="size-5 group-hover:scale-110 transition-transform duration-300" />
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                            {skill.name}
-                        </span>
-                    </div>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.frontend.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
+
+        <!-- Backend -->
+        <div>
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Backend
+            </h4>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.backend.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
                 ))}
             </div>
         </div>
 
         <!-- Herramientas -->
         <div>
-            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-4 uppercase tracking-wider">
-                Herramientas
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Habilidades y Herramientas Complementarias
             </h4>
-            <div class="flex flex-wrap gap-3">
-                {Skills.tools.map((tool) => (
-                    <div class="group relative flex items-center gap-2.5 px-4 py-2.5 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all duration-300">
-                        <tool.icon class="size-5 group-hover:scale-110 transition-transform duration-300" />
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                            {tool.name}
-                        </span>
-                    </div>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.tools.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
                 ))}
             </div>
         </div>
