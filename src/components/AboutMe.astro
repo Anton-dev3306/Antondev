@@ -2,29 +2,42 @@
 import ProfileCheck from "./icons/ProfileCheck.astro";
 import TitleSection from "./TitleSection.astro";
 ---
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+
+<article
+  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
+>
   <div
-      class="[&>p]:mb-4 [&>p>strong]:text-green-800 dark:[&>p>strong]:text-green-600 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  ><figure class="flex flex-row gap-6 items-center">
-    <div class="flex-1 flex flex-col gap-4">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </TitleSection>
-      <p class="text-pretty">
-        Antonio,<strong style="color: green">desarrollador web</strong>  con experiencia en <strong style="color: green">React, Next.js, Tailwind CSS y Spring Boot.</strong> 
-        Me apasiona construir productos completos, desde la interfaz hasta el backend, integrando APIs, bases de datos y servicios en la nube. 
-        Contributor activo en proyectos open source, con PRs mergeados en áreas de backend, DevOps e infraestructura. También tengo experiencia en AI Engineering usando n8n y Cloud Computing 
-        usando Google Cloud y Cloudinary.
-      </p>
-    </div>
-    <img
+    class="[&>p]:mb-4 [&>p>strong]:text-green-800 dark:[&>p>strong]:text-green-600 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+  >
+    <figure class="flex flex-row gap-6 items-center">
+      <div class="flex-1 flex flex-col gap-4">
+        <TitleSection>
+          <ProfileCheck class="size-8" />
+          Sobre mí
+        </TitleSection>
+        <p class="text-pretty">
+          Antonio, <strong style="color: green">desarrollador web</strong> con experiencia
+          desarrollando aplicaciones con <strong style="color: green"
+            >React, Next.js, Tailwind CSS y Spring Boot.</strong
+          >
+          Me enfoco en crear aplicaciones web modernas, eficientes y escalables, con
+          especial atención en la experiencia de usuario, el rendimiento y la integración
+          de APIs, bases de datos y servicios web. He participado en el desarrollo completo de proyectos,
+          desde la planificación y diseño hasta el despliegue y mantenimiento. Contributor
+          activo en proyectos open source, con PRs mergeados en áreas de backend,
+          DevOps e infraestructura. También tengo experiencia en automatización y
+          AI Engineering, desarrollando flujos inteligentes y automatizaciones usando
+          n8n. Seguro de mi capacidad para resolver problemas complejos, adaptarme
+          rápidamente y colaborar de forma efectiva dentro de un equipo de desarrollo.
+        </p>
+      </div>
+      <img
         width="150"
         height="150"
         src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif"
         alt="Animación de perfil"
         class="rounded-lg flex-shrink-0"
-    >
-  </figure>
+      />
+    </figure>
   </div>
 </article>

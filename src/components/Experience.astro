@@ -1,30 +1,68 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import GitHub from "./icons/GitHub.astro"
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+
 const EXPERIENCE = [
-  {
-    date: "",
-    title: "",
-    company: "",
-    description:
-      "",
-    link: "",
-  },
-  {
-    date: "",
-    title: "",
-    company: "",
-    description:
-      "",
-  },
+    {
+        date: "Mayo 2025 - Actualidad",
+        title: "Open Source Contributor",
+        company: "QuoteVote",
+        description:
+            "Contribuí en una plataforma basada en GraphQL y arquitectura monorepo, resolviendo errores relacionados con resolvers, validación de esquemas, autenticación, CI/CD y despliegues en Railway. También trabajé en debugging backend y configuración de GitHub Actions.",
+        github: "https://github.com/QuoteVote/QuoteVote",
+        link: "https://quotevote.vercel.app/",
+        current: true,
+    },
+    {
+        date: "Mayo 2025 - Actualidad",
+        title: "Open Source Contributor",
+        company: "Beautifier.js",
+        description:
+            "Participé corrigiendo bugs relacionados con indentación en LESS y experiencia de usuario en el editor. Trabajé analizando el flujo interno del formateador y manteniendo consistencia entre implementaciones en JavaScript y Python.",
+        github: "https://github.com/beautifier/js-beautify",
+        link: "https://beautifier.io/",
+        current: true,
+    },
 ]
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experience) => (
-      <li class="">
-        <ExperienceItem {...experience} />
-      </li>
-    ))
-  }
-</ol>
+<div class="flex flex-col gap-y-12">
+    {EXPERIENCE.map(({ date, title, company, description, github, link }) => (
+        <article class="flex flex-col gap-y-3 border-l-2 border-green-500 pl-6">
+            <span class="text-sm text-gray-500 dark:text-gray-400">
+                {date}
+            </span>
+
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+                    {title}
+                </h3>
+
+                <p class="text-green-600 dark:text-green-400 font-medium">
+                    {company}
+                </p>
+            </div>
+
+            <p class="text-gray-700 dark:text-gray-400">
+                {description}
+            </p>
+
+            <footer class="flex items-center gap-x-4 pt-2">
+                {github && (
+                    <LinkButton href={github}>
+                        <GitHub class="size-5" />
+                        Repo
+                    </LinkButton>
+                )}
+
+                {link && (
+                    <LinkButton href={link}>
+                        <Link class="size-4" />
+                        Preview
+                    </LinkButton>
+                )}
+            </footer>
+        </article>
+    ))}
+</div>
