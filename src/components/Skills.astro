@@ -1,38 +1,39 @@
 ---
 import Code from "./icons/Code.astro"
 
-const Skills = [
-    // Frontend
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Astro",
-    "Tailwind CSS",
-
-    // Backend
-    "Java",
-    "Spring Boot",
-    "Spring Security",
-    "Hibernate",
-    "Java EE",
-    "PHP",
-    "Laravel",
-
-    // Herramientas
-    "MySQL",
-    "PostgreSQL",
-    "Firebird",
-    "Docker",
-    "Git",
-    "GitHub",
-    "Postman",
-    "Google Cloud",
-    "n8n",
-    "RabbitMQ",
-    "JWT"
-]
+const Skills = {
+    frontend: [
+        "HTML",
+        "CSS", 
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Astro",
+        "Tailwind CSS"
+    ],
+    backend: [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "Hibernate",
+        "Java EE",
+        "PHP",
+        "Laravel"
+    ],
+    tools: [
+        "MySQL",
+        "PostgreSQL",
+        "Firebird",
+        "Docker",
+        "Git",
+        "GitHub",
+        "Postman",
+        "Google Cloud",
+        "n8n",
+        "RabbitMQ",
+        "JWT"
+    ]
+}
 ---
 
 <article class="relative">
@@ -43,13 +44,47 @@ const Skills = [
         </h3>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-        {Skills.map((skill) => (
-            <span
-                class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100 text-center transition-transform duration-200 hover:scale-105"
-            >
-                {skill}
-            </span>
-        ))}
+    <div class="space-y-6">
+        <!-- Frontend -->
+        <div>
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Lenguajes y Frameworks Frontend
+            </h4>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.frontend.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
+
+        <!-- Backend -->
+        <div>
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Backend
+            </h4>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.backend.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
+
+        <!-- Herramientas -->
+        <div>
+            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Habilidades y Herramientas Complementarias
+            </h4>
+            <div class="flex flex-wrap gap-2.5">
+                {Skills.tools.map((skill) => (
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
     </div>
 </article>
