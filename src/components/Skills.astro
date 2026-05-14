@@ -36,20 +36,14 @@ const Skills = {
 }
 ---
 
-<article class="relative">
-    <div class="mb-6">
-        <h3 class="flex items-center gap-x-3 text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-8">
-            <Code class="size-7" />
-            Mis skills
-        </h3>
-    </div>
+<article class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md">
 
     <div class="space-y-6">
         <!-- Frontend -->
         <div>
-            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
-                Lenguajes y Frameworks Frontend
-            </h4>
+            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+                Frontend
+            </h2>
             <div class="flex flex-wrap gap-2.5">
                 {Skills.frontend.map((skill) => (
                     <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -61,9 +55,9 @@ const Skills = {
 
         <!-- Backend -->
         <div>
-            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                 Backend
-            </h4>
+            </h2>
             <div class="flex flex-wrap gap-2.5">
                 {Skills.backend.map((skill) => (
                     <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -75,9 +69,9 @@ const Skills = {
 
         <!-- Herramientas -->
         <div>
-            <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
+            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                 Habilidades y Herramientas Complementarias
-            </h4>
+            </h2>
             <div class="flex flex-wrap gap-2.5">
                 {Skills.tools.map((skill) => (
                     <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
