@@ -1,84 +1,49 @@
 ---
 import Code from "./icons/Code.astro"
+import NextJS from "./icons/NextJS.astro"
+import Tailwind from "./icons/Tailwind.astro"
+import JavaScript from "./icons/JavaScript.astro"
+import React from "./icons/React.astro"
+import Java from "./icons/Java.astro"
+import SpringBoot from "./icons/SpringBoot.astro"
+import PHP from "./icons/PHP.astro"
+import GoogleCloud from "./icons/GCloudIcon.astro"
+import N8N from "./icons/N8N.astro"
+import Laravel from "./icons/Laravel.astro"
+import MYSQL from "./icons/mysql.astro"
+import Postgres from "./icons/Postgres.astro"
+import AstroIcon from "./icons/AstroIcon.astro"
+import GitHub from "./icons/GitHub.astro"
 
-const Skills = {
-    frontend: [
-        "HTML",
-        "CSS", 
-        "JavaScript",
-        "React",
-        "Next.js",
-        "Astro",
-        "Tailwind CSS"
-    ],
-    backend: [
-        "Java",
-        "Spring Boot",
-        "Spring Security",
-        "Hibernate",
-        "Java EE",
-        "PHP",
-        "Laravel"
-    ],
-    tools: [
-        "MySQL",
-        "PostgreSQL",
-        "Firebird",
-        "Docker",
-        "Git",
-        "GitHub",
-        "Postman",
-        "Google Cloud",
-        "n8n",
-        "RabbitMQ",
-        "JWT"
-    ]
-}
+const Skills = [
+    { name: "Java", icon: Java },
+    { name: "Spring Boot", icon: SpringBoot },
+    { name: "PHP", icon: PHP },
+    { name: "Laravel", icon: Laravel },
+    { name: "JavaScript", icon: JavaScript },
+    { name: "React", icon: React },
+    { name: "Next.js", icon: NextJS },
+    { name: "Astro", icon: AstroIcon },
+    { name: "Tailwind CSS", icon: Tailwind },
+    { name: "MySQL", icon: MYSQL },
+    { name: "PostgreSQL", icon: Postgres },
+    { name: "Git", icon: GitHub },
+    { name: "GitHub", icon: GitHub },
+    { name: "Google Cloud", icon: GoogleCloud },
+    { name: "n8n", icon: N8N },
+]
 ---
 
-<article class="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md">
-
-    <div class="space-y-6">
-        <!-- Frontend -->
-        <div>
-            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
-                Frontend
-            </h2>
-            <div class="flex flex-wrap gap-2.5">
-                {Skills.frontend.map((skill) => (
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
-                        {skill}
-                    </span>
-                ))}
+<article class="relative">
+   
+    <div class="flex flex-wrap gap-2.5">
+        {Skills.map((skill) => (
+            <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg">
+                <skill.icon class="size-5" />
+                <span class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    {skill.name}
+                </span>
             </div>
-        </div>
-
-        <!-- Backend -->
-        <div>
-            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
-                Backend
-            </h2>
-            <div class="flex flex-wrap gap-2.5">
-                {Skills.backend.map((skill) => (
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
-                        {skill}
-                    </span>
-                ))}
-            </div>
-        </div>
-
-        <!-- Herramientas -->
-        <div>
-            <h2 class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
-                Habilidades y Herramientas Complementarias
-            </h2>
-            <div class="flex flex-wrap gap-2.5">
-                {Skills.tools.map((skill) => (
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-300 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
-                        {skill}
-                    </span>
-                ))}
-            </div>
-        </div>
+        ))}
     </div>
 </article>
